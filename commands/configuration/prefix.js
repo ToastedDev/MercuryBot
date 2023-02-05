@@ -5,6 +5,7 @@ export default {
   name: "prefix",
   description: "Change the prefix for your server.",
   userPermissions: ["ManageGuild"],
+  usage: "<new prefix>",
   run: ({ client, message, args }) => {
     if (!args[0])
       return message.channel.send("❌ You must specify a new prefix.");

@@ -12,7 +12,7 @@
 /**
  * @typedef {Omit<import('discord.js').ChatInputApplicationCommandData, "dmPermission"> & {
  * run: (params: { client: import("../structures/BotClient.js").BotClient, interaction: import("discord.js").ChatInputCommandInteraction & {
- * member: import('discord.js').GuildMember }, args: string[], prefix: string }) => any}} SlashCommand
+ * member: import('discord.js').GuildMember }, prefix: string }) => any}} SlashCommand
  */
 
 export default {};
