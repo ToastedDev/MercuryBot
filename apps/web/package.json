@@ -1,5 +1,5 @@
 {
-  "name": "@mercury/web",
+  "name": "web",
   "description": "The website for MercuryBot.",
   "version": "0.1.0",
   "private": true,

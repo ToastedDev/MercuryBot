@@ -1,8 +1,3 @@
-import { config } from "dotenv";
-config({
-  path: "../../.env",
-});
-
 import { BotClient } from "./structures/BotClient.js";
 const client = new BotClient();
 

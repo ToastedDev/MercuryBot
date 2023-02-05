@@ -6,10 +6,12 @@
   "author": "Toastify (https://toastify.tk/)",
   "license": "MIT",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --no-daemon"
+    "start": "dotenv -- turbo run start",
+    "dev": "dotenv -- turbo run dev",
+    "build": "turbo run build"
   },
-  "devDependencies": {
-    "turbo": "^1.7.3"
+  "dependencies": {
+    "dotenv-cli": "^7.0.0",
+    "turbo": "1.6.3"
   }
 }
