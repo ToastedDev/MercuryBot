@@ -4,7 +4,7 @@
     "build": {
       "outputs": [".next/**"]
     },
-    "bot#start": {
+    "start": {
       "cache": false,
       "persistent": true
     },
