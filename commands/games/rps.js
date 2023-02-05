@@ -5,6 +5,7 @@ export default {
   name: "rps",
   description: "Play Rock Paper Scissors against someone in Discord!",
   aliases: ["rockpaperscissors"],
+  usage: "<opponent>",
   run: ({ client, message }) => {
     if (!message.mentions.users.first())
       return message.channel.send({

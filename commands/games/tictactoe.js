@@ -6,6 +6,7 @@ export default {
   description:
     "Play TicTacToe in Discord! Play against an AI, or against someone else.",
   aliases: ["ttt"],
+  usage: "<opponent>",
   run: ({ client, message }) => {
     if (!message.mentions.users.first())
       return message.channel.send({

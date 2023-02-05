@@ -1,6 +1,7 @@
 export const config = {
   prefix: "$",
   color: "#F79B1E",
+  guildId: "977485367294959627",
   emojis: {
     up: "<:up:1059101020921286726>",
     down: "<:down:1059101028844318730>",

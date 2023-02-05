@@ -10,8 +10,9 @@
  */
 
 /**
- * @typedef {Object} Database
- * @prop {string} prefix
+ * @typedef {Omit<import('discord.js').ChatInputApplicationCommandData, "dmPermission"> & {
+ * run: (params: { client: import("../structures/BotClient.js").BotClient, interaction: import("discord.js").ChatInputCommandInteraction & {
+ * member: import('discord.js').GuildMember }, args: string[], prefix: string }) => any}} SlashCommand
  */
 
 export default {};

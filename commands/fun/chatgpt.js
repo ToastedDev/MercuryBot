@@ -11,6 +11,7 @@ const openai = new OpenAIApi(
 export default {
   name: "chatgpt",
   description: "Ask ChatGPT a question!",
+  usage: "<prompt>",
   run: async ({
     client: {
       config: { color },

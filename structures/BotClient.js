@@ -31,7 +31,7 @@ export class BotClient extends Client {
   }
 
   register() {
-    ["commands", "events"].forEach(async (handler) => {
+    ["commands", "slashCommands", "events"].forEach(async (handler) => {
       (await import(`../handlers/${handler}.js`).then((x) => x.default))(this);
     });
   }

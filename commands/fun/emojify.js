@@ -4,6 +4,7 @@ import { Emojify } from "discord-gamecord";
 export default {
   name: "emojify",
   description: "Convert text into emojis!",
+  usage: "<text>",
   run: async ({ message, args }) => {
     if (!args[0])
       return message.channel.send(

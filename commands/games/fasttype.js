@@ -14,5 +14,6 @@ export default {
       },
       sentence,
     });
+    game.startGame();
   },
 };

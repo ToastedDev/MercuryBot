@@ -1,4 +1,8 @@
-import { EmbedBuilder, PermissionsBitField } from "discord.js";
+import {
+  ApplicationCommandOptionType,
+  EmbedBuilder,
+  PermissionsBitField,
+} from "discord.js";
 import fs from "fs";
 
 /** @param {string} str */
@@ -6,18 +10,29 @@ function capitalize(str) {
   return str[0].toUpperCase() + str.toLowerCase().slice(1);
 }
 
-/** @type {import('../../utils/types').Command} */
+/** @type {import('../../utils/types').SlashCommand} */
 export default {
   name: "help",
   description: "View my commands.",
-  usage: "[command]",
-  run: async ({ client, message, args, prefix }) => {
-    const cmd = args[0]?.toLowerCase();
+  options: [
+    {
+      name: "command",
+      description: "The command to get help with.",
+      type: ApplicationCommandOptionType.String,
+      required: false,
+    },
+  ],
+  run: async ({ client, interaction, prefix }) => {
+    const cmd = interaction.options.getString("command")?.toLowerCase();
     if (cmd) {
       const command =
         client.commands.get(cmd) ||
         client.commands.find((c) => c.aliases?.includes(cmd));
-      if (!command) return message.channel.send("❌ Unknown command.");
+      if (!command)
+        return interaction.reply({
+          content: "❌ Unknown command.",
+          ephemeral: true,
+        });
 
       /** @type {string[]} */
       let description = [];
@@ -49,8 +64,9 @@ export default {
             .join(", ")}`
         );
 
-      message.channel.send({
+      interaction.reply({
         embeds: [embed.setDescription(description.join("\n"))],
+        ephemeral: true,
       });
     } else {
       const categories = [];
@@ -69,7 +85,7 @@ export default {
 
             return `\`${file.name}\``;
           })
-        ).then((x) => x.filter(Boolean).sort((a, b) => a.localeCompare(b)));
+        ).then((x) => x.filter((x) => x).sort((a, b) => a.localeCompare(b)));
 
         if (!cmds) return;
 
@@ -79,7 +95,7 @@ export default {
         });
       }
 
-      message.channel.send({
+      interaction.reply({
         embeds: [
           new EmbedBuilder()
             .setAuthor({
@@ -89,6 +105,7 @@ export default {
             .setFields(categories)
             .setColor(client.config.color),
         ],
+        ephemeral: true,
       });
     }
   },

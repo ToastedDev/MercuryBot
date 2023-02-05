@@ -4,6 +4,7 @@ import { Connect4 } from "discord-gamecord";
 export default {
   name: "connect4",
   description: "Play Connect 4 against someone in Discord!",
+  usage: "<opponent>",
   run: ({ client, message }) => {
     if (!message.mentions.users.first())
       return message.channel.send({
