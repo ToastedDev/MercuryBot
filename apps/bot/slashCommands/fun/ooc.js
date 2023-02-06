@@ -18,7 +18,7 @@ export default {
       name: `${res.data.number}.png`,
     });
 
-    interaction.editReply({
+    interaction.followUp({
       embeds: [
         new EmbedBuilder()
           .setImage(`attachment://${res.data.number}.png`)

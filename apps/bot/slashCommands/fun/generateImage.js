@@ -34,7 +34,7 @@ export default {
       name: "craiyon.png",
     });
 
-    interaction.editReply({
+    interaction.followUp({
       embeds: [
         new EmbedBuilder()
           .setDescription(`**Prompt**: ${prompt}`)

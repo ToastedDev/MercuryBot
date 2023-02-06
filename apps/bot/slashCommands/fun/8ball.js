@@ -25,7 +25,7 @@ export default {
 
     const res = await axios.get("https://api.popcat.xyz/8ball");
 
-    interaction.editReply({
+    interaction.followUp({
       embeds: [
         new EmbedBuilder()
           .setDescription(`**Q**: ${question}\n**A**: ${res.data.answer}`)

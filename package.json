@@ -11,8 +11,6 @@
     "build": "turbo run build"
   },
   "dependencies": {
-    "bot": "workspace:^1.0.0",
-    "craiyon": "^1.0.0",
     "dotenv-cli": "^7.0.0",
     "turbo": "1.6.3"
   },
