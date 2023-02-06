@@ -1,36 +1,40 @@
 import { Client } from "craiyon";
-import { AttachmentBuilder, EmbedBuilder } from "discord.js";
+import {
+  ApplicationCommandOptionType,
+  AttachmentBuilder,
+  EmbedBuilder,
+} from "discord.js";
 
 const craiyon = new Client();
 
-/** @type {import('../../utils/types').Command} */
+/** @type {import('../../utils/types').SlashCommand} */
 export default {
-  name: "generateImage",
+  name: "generate-image",
   description: "Generate an image using Craiyon (formerly DALL-E Mini).",
-  aliases: ["generate", "image", "craiyon", "dall-e"],
-  usage: "<prompt>",
+  options: [
+    {
+      name: "prompt",
+      description: "The prompt for the image.",
+      type: ApplicationCommandOptionType.String,
+      required: true,
+    },
+  ],
   run: async ({
     client: {
       config: { color },
     },
-    message,
-    args,
+    interaction,
   }) => {
-    const prompt = args.join(" ");
-    if (!prompt)
-      return message.channel.send("❌ You have to specify a prompt.");
+    const prompt = interaction.options.getString("prompt");
 
-    const msg = await message.channel.send(
-      "<a:loading:994224812123758722> Painting the perfect image..."
-    );
+    await interaction.deferReply();
 
     const { images } = await craiyon.generate({ prompt });
     const attachment = new AttachmentBuilder(images[0].asBuffer(), {
       name: "craiyon.png",
     });
 
-    msg.edit({
-      content: null,
+    interaction.editReply({
       embeds: [
         new EmbedBuilder()
           .setDescription(`**Prompt**: ${prompt}`)
