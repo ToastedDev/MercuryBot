@@ -8,10 +8,10 @@ export default (client) => {
       .filter((file) => file.endsWith("js"));
 
     for (const file of commandFiles) {
-      const command = await import(`../commands/${dir}/${file}`).then(
-        (x) => x.default
-      );
-      if (!command.name || !command.run) continue;
+      const command = await import(`../commands/${dir}/${file}`)
+        .then((x) => x.default)
+        .catch(() => null);
+      if (!command?.name || !command?.run) continue;
 
       client.commands.set(command.name, { directory: dir, ...command });
     }
