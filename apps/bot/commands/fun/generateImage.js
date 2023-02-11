@@ -5,7 +5,7 @@ const craiyon = new Client();
 
 /** @type {import('../../utils/types').Command} */
 export default {
-  name: "generateImage",
+  name: "generate-image",
   description: "Generate an image using Craiyon (formerly DALL-E Mini).",
   aliases: ["generate", "image", "craiyon", "dall-e"],
   usage: "<prompt>",
